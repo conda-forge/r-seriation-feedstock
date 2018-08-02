@@ -14,14 +14,16 @@ Summary: Infrastructure for seriation with an implementation of several seriatio
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/r-seriation-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/r-seriation-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/r-seriation-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/r-seriation-feedstock)
-Windows: [![AppVeyor](https://ci.appveyor.com/api/projects/status/github/conda-forge/r-seriation-feedstock?svg=True)](https://ci.appveyor.com/project/conda-forge/r-seriation-feedstock/branch/master)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/r-seriation-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/r-seriation-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/r-seriation-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/r-seriation-feedstock)
+[![Windows](https://img.shields.io/appveyor/ci/conda-forge/r-seriation-feedstock/master.svg?label=Windows)](https://ci.appveyor.com/project/conda-forge/r-seriation-feedstock/branch/master)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-seriation/badges/version.svg)](https://anaconda.org/conda-forge/r-seriation)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/r-seriation/badges/downloads.svg)](https://anaconda.org/conda-forge/r-seriation)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-r--seriation-green.svg)](https://anaconda.org/conda-forge/r-seriation) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/r-seriation.svg)](https://anaconda.org/conda-forge/r-seriation) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/r-seriation.svg)](https://anaconda.org/conda-forge/r-seriation) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/r-seriation.svg)](https://anaconda.org/conda-forge/r-seriation) |
 
 Installing r-seriation
 ======================

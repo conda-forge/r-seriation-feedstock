@@ -15,7 +15,8 @@ source:
   sha256: 22cd0bc3988883b3689cdc9642ac36f25db1c13012b0063c5944082e21e1d0e0
 
 build:
-  number: 0
+  merge_build_host: True  # [win]
+  number: 1
   skip: true  # [win32]
   rpaths:
     - lib/R/lib/
@@ -23,6 +24,12 @@ build:
 
 requirements:
   build:
+    - posix                # [win]
+    - {{ compiler('fortran') }}        # [unix]
+    - {{ compiler('m2w64_fortran') }}  # [win]
+    - {{ compiler('c') }}        # [unix]
+    - {{ compiler('m2w64_c') }}  # [win]
+  host:
     - r-base
     - r-mass
     - r-tsp
@@ -33,9 +40,6 @@ requirements:
     - r-gplots
     - r-qap
     - r-registry
-    - posix                # [win]
-    - {{native}}toolchain  # [win]
-    - gcc                  # [not win]
 
   run:
     - r-base
@@ -48,7 +52,6 @@ requirements:
     - r-gplots
     - r-qap
     - r-registry
-    - libgcc  # [not win]
 
 test:
   commands:
