@@ -1,5 +1,4 @@
 {% set version = '1.2-3' %}
-
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,8 +9,8 @@ package:
 source:
   fn: seriation_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/seriation_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/seriation/seriation_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/seriation_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/seriation/seriation_{{ version }}.tar.gz
   sha256: 22cd0bc3988883b3689cdc9642ac36f25db1c13012b0063c5944082e21e1d0e0
 
 build:
@@ -24,11 +23,14 @@ build:
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('fortran') }}        # [unix]
-    - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('fortran') }}  # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
     - r-mass
@@ -40,9 +42,9 @@ requirements:
     - r-gplots
     - r-qap
     - r-registry
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
     - r-mass
     - r-tsp
     - r-cluster
@@ -55,7 +57,7 @@ requirements:
 
 test:
   commands:
-    - $R -e "library('seriation')"  # [not win]
+    - $R -e "library('seriation')"           # [not win]
     - "\"%R%\" -e \"library('seriation')\""  # [win]
 
 about:
@@ -71,8 +73,9 @@ about:
 
 extra:
   recipe-maintainers:
-    - cbrueffer
     - johanneskoester
     - bgruening
     - daler
     - jdblischak
+    - cbrueffer
+    - dbast
