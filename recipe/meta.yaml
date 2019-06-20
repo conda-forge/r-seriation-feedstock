@@ -1,4 +1,4 @@
-{% set version = '1.2-3' %}
+{% set version = '1.2-7' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,25 +7,24 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: seriation_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/seriation_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/seriation/seriation_{{ version }}.tar.gz
-  sha256: 22cd0bc3988883b3689cdc9642ac36f25db1c13012b0063c5944082e21e1d0e0
+  sha256: 465dfef369e3fbce734e05cbfb0b1886f53071cc1e5e08b9c88e785dcb2a7f35
 
 build:
   merge_build_host: True  # [win]
-  number: 1001
-  skip: true  # [win32]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('fortran') }}  # [not win]
-    - {{native}}toolchain        # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('fortran') }}        # [not win]
+    - {{ compiler('m2w64_fortran') }}  # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
     - {{posix}}sed               # [win]
@@ -61,9 +60,9 @@ test:
     - "\"%R%\" -e \"library('seriation')\""  # [win]
 
 about:
-  home: http://lyle.smu.edu/IDA/seriation
+  home: https://github.com/mhahsler/seriation
   license: GPL-3
-  summary: Infrastructure for seriation with an implementation of several seriation/sequencing
+  summary: Infrastructure for ordering objects with an implementation of several seriation/sequencing/ordination
     techniques to reorder matrices, dissimilarity matrices, and dendrograms. Also provides
     (optimally) reordered heatmaps, color images and clustering visualizations like
     dissimilarity plots, and visual assessment of cluster tendency plots (VAT and iVAT).
@@ -72,9 +71,26 @@ about:
 
 extra:
   recipe-maintainers:
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+    - conda-forge/r
+
+# Package: seriation
+# Type: Package
+# Title: Infrastructure for Ordering Objects Using Seriation
+# Version: 1.2-7
+# Date: 2019-06-07
+# Authors@R: c( person("Michael", "Hahsler", role = c("aut", "cre", "cph"), email = "mhahsler@lyle.smu.edu"), person("Christian", "Buchta", role = c("aut", "cph")), person("Kurt", "Hornik", role = c("aut", "cph")), person("Fionn", "Murtagh", role = c("ctb", "cph")), person("Michael", "Brusco", role = c("ctb", "cph")), person("Stephanie", "Stahl", role = c("ctb", "cph")), person("Hans-Friedrich", "Koehn", role = c("ctb", "cph")))
+# Description: Infrastructure for ordering objects with an implementation of several seriation/sequencing/ordination techniques to reorder matrices, dissimilarity matrices, and dendrograms. Also provides (optimally) reordered heatmaps, color images and clustering visualizations like dissimilarity plots, and visual assessment of cluster tendency plots (VAT and iVAT).
+# Classification/ACM: G.1.6, G.2.1, G.4
+# URL: https://github.com/mhahsler/seriation
+# BugReports: https://github.com/mhahsler/seriation/issues
+# Depends: R (>= 2.14.0)
+# Imports: TSP, qap, grid, cluster, gclus, dendextend, colorspace, MASS, gplots, registry, methods, stats, grDevices
+# Suggests: biclust, testthat, DendSer, GA
+# License: GPL-3
+# Copyright: The code in src/bea.f is Copyright (C) 1991 F. Murtagh; src/bbwrcg.f, src/arsa.f and src/bburcg.f are Copyright (C) 2005 M. Brusco, H.F. Koehn, and S. Stahl. All other code is Copyright (C) Michael Hahsler, Christian Buchta, and Kurt Hornik.
+# NeedsCompilation: yes
+# Packaged: 2019-06-08 03:38:38 UTC; hahsler
+# Author: Michael Hahsler [aut, cre, cph], Christian Buchta [aut, cph], Kurt Hornik [aut, cph], Fionn Murtagh [ctb, cph], Michael Brusco [ctb, cph], Stephanie Stahl [ctb, cph], Hans-Friedrich Koehn [ctb, cph]
+# Maintainer: Michael Hahsler <mhahsler@lyle.smu.edu>
+# Repository: CRAN
+# Date/Publication: 2019-06-08 14:40:03 UTC
