@@ -1,11 +1,22 @@
+About r-seriation-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-seriation-feedstock/blob/main/LICENSE.txt)
+
 About r-seriation
-=================
+-----------------
 
 Home: https://github.com/mhahsler/seriation
 
 Package license: GPL-3.0-only
 
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-seriation-feedstock/blob/main/LICENSE.txt)
+Summary: Infrastructure for ordering objects with an implementation of several seriation/sequencing/ordination techniques to reorder matrices, dissimilarity matrices, and dendrograms. Also provides (optimally) reordered heatmaps, color images and clustering visualizations like dissimilarity plots, and visual assessment of cluster tendency plots (VAT and iVAT).
+About r-seriation
+-----------------
+
+Home: https://github.com/mhahsler/seriation
+
+Package license: GPL-3.0-only
 
 Summary: Infrastructure for ordering objects with an implementation of several seriation/sequencing/ordination techniques to reorder matrices, dissimilarity matrices, and dendrograms. Also provides (optimally) reordered heatmaps, color images and clustering visualizations like dissimilarity plots, and visual assessment of cluster tendency plots (VAT and iVAT).
 
