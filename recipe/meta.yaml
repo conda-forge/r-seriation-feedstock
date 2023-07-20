@@ -1,4 +1,4 @@
-{% set version = "1.4.2" %}
+{% set version = "1.5.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/seriation_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/seriation/seriation_{{ version }}.tar.gz
-  sha256: ad19ecbc375aa8121b8a60c6bbd0e7b3a5ab2779dab805c72124caa472ff5090
+  sha256: daddfee4f7a1c4b63d98a1106481754b368c8163abf043198c274b0097a85118
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -25,32 +25,37 @@ requirements:
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('fortran') }}        # [not win]
     - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ posix }}filesystem            # [win]
+    - {{ posix }}filesystem        # [win]
     - {{ posix }}make
-    - {{ posix }}sed                   # [win]
-    - {{ posix }}coreutils             # [win]
-    - {{ posix }}zip                   # [win]
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
+    - r-mass
+    - r-tsp
     - r-ca
     - r-cluster
     - r-colorspace
+    - r-foreach
     - r-gclus
-    - r-mass
     - r-qap
     - r-registry
-    - r-tsp
+    - r-vegan
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-mass
+    - r-tsp
     - r-ca
     - r-cluster
     - r-colorspace
+    - r-foreach
     - r-gclus
-    - r-mass
     - r-qap
     - r-registry
-    - r-tsp
+    - r-vegan
 
 test:
   commands:
