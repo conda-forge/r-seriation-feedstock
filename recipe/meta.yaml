@@ -25,32 +25,37 @@ requirements:
     - {{ compiler('m2w64_c') }}        # [win]
     - {{ compiler('fortran') }}        # [not win]
     - {{ compiler('m2w64_fortran') }}  # [win]
-    - {{ posix }}filesystem            # [win]
+    - {{ posix }}filesystem        # [win]
     - {{ posix }}make
-    - {{ posix }}sed                   # [win]
-    - {{ posix }}coreutils             # [win]
-    - {{ posix }}zip                   # [win]
+    - {{ posix }}sed               # [win]
+    - {{ posix }}coreutils         # [win]
+    - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
+    - r-mass
+    - r-tsp
     - r-ca
     - r-cluster
     - r-colorspace
+    - r-foreach
     - r-gclus
-    - r-mass
     - r-qap
     - r-registry
-    - r-tsp
+    - r-vegan
   run:
     - r-base
     - {{ native }}gcc-libs         # [win]
+    - r-mass
+    - r-tsp
     - r-ca
     - r-cluster
     - r-colorspace
+    - r-foreach
     - r-gclus
-    - r-mass
     - r-qap
     - r-registry
-    - r-tsp
+    - r-vegan
 
 test:
   commands:
