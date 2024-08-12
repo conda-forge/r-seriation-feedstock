@@ -1,6 +1,5 @@
 {% set version = "1.5.5" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-seriation
@@ -13,8 +12,7 @@ source:
   sha256: f7834c86fd68330ae706d33dfaeb3ee53fa58c2137a29f2b5b37a38158bc046d
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   rpaths:
     - lib/R/lib/
     - lib/
@@ -22,7 +20,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('fortran') }}        # [not win]
     - {{ compiler('m2w64_fortran') }}  # [win]
     - {{ posix }}filesystem        # [win]
@@ -45,7 +45,6 @@ requirements:
     - r-vegan
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-mass
     - r-tsp
     - r-ca
